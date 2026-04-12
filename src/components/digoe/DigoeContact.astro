@@ -1,4 +1,13 @@
 ---
+import { getMessages } from '../../i18n';
+import type { Locale } from '../../i18n/types';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getMessages(locale).contact;
 const phone = import.meta.env.PUBLIC_PHONE ?? '33 3123 0189';
 const email = import.meta.env.PUBLIC_CONTACT_EMAIL ?? 'info@digoegf.com';
 const location = import.meta.env.PUBLIC_PRIVACY_ADDRESS ?? 'Guadalajara, Jalisco, México';
@@ -9,13 +18,13 @@ const location = import.meta.env.PUBLIC_PRIVACY_ADDRESS ?? 'Guadalajara, Jalisco
     <div class="bg-primary p-1 md:p-16">
       <div class="grid grid-cols-1 gap-16 lg:grid-cols-2">
         <div class="text-primary-content">
-          <h2 class="text-display-lg mb-8 max-sm:text-3xl">Hablemos de su próximo proyecto</h2>
+          <h2 class="text-display-lg mb-8 max-sm:text-3xl">{t.title}</h2>
           <div class="space-y-8">
             <div class="flex items-center gap-6">
               <span class="material-symbols-outlined text-3xl!" aria-hidden="true">phone_in_talk</span>
               <div>
                 <span class="block text-[0.6875rem] font-bold uppercase tracking-widest opacity-70"
-                  >Teléfono</span
+                  >{t.phone}</span
                 >
                 <span class="text-xl font-bold">{phone}</span>
               </div>
@@ -24,7 +33,7 @@ const location = import.meta.env.PUBLIC_PRIVACY_ADDRESS ?? 'Guadalajara, Jalisco
               <span class="material-symbols-outlined text-3xl!" aria-hidden="true">mail</span>
               <div>
                 <span class="block text-[0.6875rem] font-bold uppercase tracking-widest opacity-70"
-                  >Email</span
+                  >{t.email}</span
                 >
                 <a class="text-xl font-bold hover:underline" href={`mailto:${email}`}>{email}</a>
               </div>
@@ -33,7 +42,7 @@ const location = import.meta.env.PUBLIC_PRIVACY_ADDRESS ?? 'Guadalajara, Jalisco
               <span class="material-symbols-outlined text-3xl!" aria-hidden="true">location_on</span>
               <div>
                 <span class="block text-[0.6875rem] font-bold uppercase tracking-widest opacity-70"
-                  >Ubicación</span
+                  >{t.location}</span
                 >
                 <span class="text-xl font-bold">{location}</span>
               </div>
@@ -45,50 +54,50 @@ const location = import.meta.env.PUBLIC_PRIVACY_ADDRESS ?? 'Guadalajara, Jalisco
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div>
                 <label class="mb-2 block text-[0.6875rem] font-bold uppercase" for="digoe-name"
-                  >Nombre</label
+                  >{t.formName}</label
                 >
                 <input
                   id="digoe-name"
                   name="name"
                   type="text"
-                  placeholder="Su nombre completo"
+                  placeholder={t.placeholderName}
                   class="w-full border-0 border-b-2 border-transparent bg-base-200 px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-0"
                 />
               </div>
               <div>
                 <label class="mb-2 block text-[0.6875rem] font-bold uppercase" for="digoe-company"
-                  >Empresa</label
+                  >{t.formCompany}</label
                 >
                 <input
                   id="digoe-company"
                   name="company"
                   type="text"
-                  placeholder="Nombre de su empresa"
+                  placeholder={t.placeholderCompany}
                   class="w-full border-0 border-b-2 border-transparent bg-base-200 px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-0"
                 />
               </div>
             </div>
             <div>
               <label class="mb-2 block text-[0.6875rem] font-bold uppercase" for="digoe-email"
-                >Email corporativo</label
+                >{t.formEmail}</label
               >
               <input
                 id="digoe-email"
                 name="email"
                 type="email"
-                placeholder="email@empresa.com"
+                placeholder={t.placeholderEmail}
                 class="w-full border-0 border-b-2 border-transparent bg-base-200 px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-0"
               />
             </div>
             <div>
               <label class="mb-2 block text-[0.6875rem] font-bold uppercase" for="digoe-msg"
-                >Mensaje / Requerimiento</label
+                >{t.formMessage}</label
               >
               <textarea
                 id="digoe-msg"
                 name="message"
                 rows="4"
-                placeholder="Describa brevemente su necesidad técnica"
+                placeholder={t.placeholderMessage}
                 class="w-full border-0 border-b-2 border-transparent bg-base-200 px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-0"
               ></textarea>
             </div>
@@ -96,7 +105,7 @@ const location = import.meta.env.PUBLIC_PRIVACY_ADDRESS ?? 'Guadalajara, Jalisco
               type="submit"
               class="w-full bg-accent py-4 text-sm font-bold uppercase tracking-widest text-accent-content transition-colors hover:bg-primary"
             >
-              Enviar solicitud
+              {t.submit}
             </button>
           </form>
         </div>

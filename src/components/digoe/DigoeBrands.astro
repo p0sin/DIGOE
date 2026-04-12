@@ -1,32 +1,21 @@
 ---
-const brands = [
-  {
-    name: 'DYMAX',
-    slug: 'dymax',
-    body: 'Líder global en adhesivos de curado rápido y sistemas de luz UV.',
-    alt: 'Equipo Dymax industrial',
-  },
-  {
-    name: 'PLASMATREAT',
-    slug: 'plasmatreat',
-    body: 'Tecnología de plasma atmosférico para el tratamiento de superficies.',
-    alt: 'Tecnología Plasmatreat',
-  },
-  {
-    name: 'JANOME',
-    slug: 'janome',
-    body: 'Robótica industrial de alta precisión y sistemas de automatización.',
-    alt: 'Robótica Janome',
-  },
-] as const;
+import { getMessages, homeSectionHash } from '../../i18n';
+import type { Locale } from '../../i18n/types';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getMessages(locale).brands;
 ---
 
 <section class="industrial-white-space bg-base-100" id="brands">
   <div class="container mx-auto px-8">
-    <h2 class="text-headline-md mb-16 text-center">Tecnología de punta</h2>
+    <h2 class="text-headline-md mb-16 text-center">{t.title}</h2>
     <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
       {
-        brands.map((b) => (
+        t.items.map((b) => (
           <div class="group relative overflow-hidden bg-base-100">
             <div class="h-64 overflow-hidden">
               <img
@@ -43,9 +32,9 @@ const brands = [
               <p class="mb-6 text-sm text-slate-600">{b.body}</p>
               <a
                 class="border-b-2 border-primary pb-1 text-xs font-bold uppercase tracking-widest text-primary"
-                href="#contact"
+                href={homeSectionHash(locale, 'contact')}
               >
-                Ver catálogo
+                {t.ctaCatalog}
               </a>
             </div>
           </div>

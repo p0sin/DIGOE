@@ -1,0 +1,235 @@
+---
+import { getMessages } from '../i18n';
+import { homePath } from '../i18n/routes';
+
+const t = getMessages('en').privacy;
+const NAME = import.meta.env.PUBLIC_PRIVACY_NAME ?? '[FULL_NAME_OF_DATA_CONTROLLER]';
+const ADRESS = import.meta.env.PUBLIC_PRIVACY_ADDRESS ?? '[FULL_ADDRESS]';
+const EMAIL = import.meta.env.PUBLIC_CONTACT_EMAIL;
+const URL = import.meta.env.PUBLIC_SITE_URL;
+---
+
+<div class="container mx-auto max-w-3xl px-4 py-8">
+  <div class="bg-secondary mb-6 rounded-lg p-6">
+    <a href={homePath('en')}>
+      <img src="/favicon.svg" alt={t.logoAlt} class="w-24" />
+    </a>
+    <h1 class="text-primary my-6 text-3xl font-bold">
+      {t.title}
+    </h1>
+    <p class="text-justify text-white">
+      <strong>{NAME}</strong>, with address at {ADRESS}, is responsible for the use and protection of your
+      personal data, and we inform you of the following:
+    </p>
+  </div>
+
+  <div class="text-justify text-primary">
+    <p class="mb-4">
+      <strong>Privacy Department</strong><br />
+      To handle any request regarding the exercise of your ARCO rights, revocation of consent you may have
+      granted for the processing of your personal data, limitation of use or disclosure of your data, or the
+      purposes of processing your personal data, our Privacy Department is available through the following
+      contact channels:
+    </p>
+
+    <p class="mb-4">
+      <strong>Email:</strong>
+      {EMAIL}
+    </p>
+
+    <p class="mb-4">To communicate with you, we need the following personal and contact data in your request:</p>
+
+    <ul class="mb-4 list-disc pl-8">
+      <li>Data subject’s name</li>
+      <li>Authorization letter if the request is submitted by someone other than the data subject</li>
+      <li>Copy of the data subject’s identification</li>
+      <li>Email address</li>
+      <li>Phone number</li>
+    </ul>
+
+    <p class="mb-4">
+      After we receive your request, you will receive our response within a maximum of twenty business days
+      through the contact methods you provide.
+    </p>
+
+    <p class="mb-4">
+      <strong>For what purposes will we use your personal data?</strong><br />
+      The personal data we collect from you will be used for the following purposes that are necessary for the
+      service you request:
+    </p>
+
+    <ul class="mb-4 list-disc pl-8">
+      <li>Contact purposes</li>
+      <li>To allow registration on the site</li>
+      <li>To access site content</li>
+      <li>Billing and collection</li>
+      <li>Shipping and delivery of products</li>
+    </ul>
+
+    <p class="mb-4">
+      Additionally, we will use your personal information for the following secondary purposes that are not
+      necessary for the requested service but allow us to provide better service:
+    </p>
+
+    <ul class="mb-4 list-disc pl-8">
+      <li>Advertising communications</li>
+    </ul>
+
+    <p class="mb-4">
+      If you do not wish your personal data to be processed for these additional purposes, you may indicate so
+      through the channel where you provide your data by selecting the appropriate option. Refusal to use your
+      data for these additional purposes cannot be grounds for denying the services or products you request or
+      contract with us.
+    </p>
+
+    <p class="mb-4">
+      <strong>What personal data will we use for these purposes?</strong><br />
+      To carry out the purposes described in this Privacy Notice, we will use the following personal data:
+    </p>
+
+    <ul class="mb-4 list-disc pl-8">
+      <li>Contact data</li>
+      <li>Identification data</li>
+      <li>Billing data</li>
+      <li>Employment data</li>
+      <li>Academic data</li>
+      <li>Physical traits and distinguishing features</li>
+      <li>Financial or asset data</li>
+    </ul>
+
+    <p class="mb-4">
+      In addition to the personal data mentioned above, for the purposes stated in this Privacy Notice we will
+      use the following personal data considered sensitive, which require special protection:
+    </p>
+
+    <ul class="mb-4 list-disc pl-8">
+      <li>Health data</li>
+      <li>Sexual behavior and preferences</li>
+      <li>Ethnic or racial origin</li>
+    </ul>
+
+    <p class="mb-4">
+      <strong>How can you Access, Rectify, Cancel your personal data, or Object to its use?</strong><br />
+      You have the right to know what personal data we hold about you, for what purposes we use it, and the
+      terms of its use (Access). You may request correction of your personal information if it is outdated,
+      inaccurate, or incomplete (Rectification); request deletion from our records or databases when you
+      consider it is not being used in accordance with applicable principles, duties, and obligations
+      (Cancellation); and object to the use of your personal data for specific purposes (Objection). These
+      rights are known as ARCO rights.
+    </p>
+
+    <p class="mb-4">
+      If you wish to exercise your ARCO rights, you may do so by contacting our Privacy Department through the
+      channels set out in this notice.
+    </p>
+
+    <p class="mb-4">
+      <strong>How can you revoke consent for the use of your personal data?</strong><br />
+      You may revoke consent you have given, where applicable, for the processing of your personal data.
+      However, please note that we may not always be able to fulfill your request or cease use immediately,
+      as we may be legally required to continue processing your data. Revocation may also mean we can no longer
+      provide the service you requested or may end your relationship with us. To learn the procedure and
+      requirements for revoking consent, contact our Privacy Department through the channels specified in this
+      notice.
+    </p>
+
+    <p class="mb-4">
+      <strong>How can you limit the use or disclosure of your personal information?</strong><br />
+      If you wish to limit the use or disclosure of your personal information, you may request it from our
+      Privacy Department through the channels specified in this notice.
+    </p>
+
+    <p class="mb-4">
+      We may also provide specific procedures and mechanisms through which you can limit the use of your
+      personal information. These will be communicated through the channels we use to contact you or others we
+      deem appropriate.
+    </p>
+
+    <p class="mb-4">
+      <strong>Use of cookies and tracking technologies</strong><br />
+      Cookies are small pieces of information stored as files on your device and generated by our website. They
+      make interaction with our site faster and easier by remembering preferences, behavior data, or
+      registration data. The information they contain may be used when you visit our site and external sites.<br
+      />
+      Some pages or emails may contain invisible images called “web beacons” or “pixel tags.” Web beacons
+      track behavior on a page or email similarly to cookies. We use cookies and other tracking technologies for
+      the following purposes:
+    </p>
+
+    <ul class="mb-4 list-disc pl-8">
+      <li>To allow registration and login on our site</li>
+      <li>
+        For proper operation of the online store, saving items added to the shopping cart and enabling payment
+      </li>
+      <li>To record and analyze behavior on our site for statistical and quality purposes</li>
+    </ul>
+
+    <p class="mb-4">
+      We may also use the information for advertising and remarketing. Remarketing displays our ads on third
+      party sites based on past visits to our site. Ads may appear as banners or suggested posts. You may opt
+      out of cookies for advertising via the Network Advertising Initiative page:
+      <a href="http://www.networkadvertising.org/choices/" class="text-primary hover:underline"
+        >www.networkadvertising.org/choices/</a
+      >
+    </p>
+
+    <p class="mb-4">
+      To disable personalized Google ads:<br />
+      <a href="http://www.google.com/settings/ads/?hl=en" class="text-primary hover:underline"
+        >www.google.com/settings/ads/?hl=en</a
+      >
+    </p>
+
+    <p class="mb-4">
+      You may also review the privacy policies of companies we use for advertising and remarketing:
+    </p>
+
+    <ul class="mb-4 list-disc pl-8">
+      <li>
+        Google: <a
+          href="http://www.google.com/intl/en/policies/privacy/"
+          class="text-primary hover:underline">www.google.com/intl/en/policies/privacy/</a
+        >
+      </li>
+      <li>
+        Microsoft Bing: <a
+          href="http://privacy.microsoft.com/en-us/privacystatement"
+          class="text-primary hover:underline">privacy.microsoft.com/en-us/privacystatement</a
+        >
+      </li>
+      <li>
+        Facebook: <a href="http://www.facebook.com/about/privacy/" class="text-primary hover:underline"
+          >www.facebook.com/about/privacy/</a
+        >
+      </li>
+      <li>
+        Twitter: <a href="http://twitter.com/privacy" class="text-primary hover:underline"
+          >twitter.com/privacy</a
+        >
+      </li>
+    </ul>
+
+    <p class="mb-4">
+      If you prefer to disable cookies entirely, you can do so in most web browsers. Note that the site may not
+      function correctly if you do. In recent versions of Mozilla Firefox, Internet Explorer, and Google Chrome,
+      the option to disable cookies is usually under “Privacy” in each browser’s settings.
+    </p>
+
+    <p class="mb-4">
+      <strong>How will you be informed of changes to this Privacy Notice?</strong><br />
+      This Privacy Notice may be modified or updated due to new legal requirements; our own needs for the
+      products or services we offer; our privacy practices; changes to our business model; or other causes.
+    </p>
+
+    <p class="mb-4">
+      Changes to the Privacy Notice will be communicated through the contact details you provide at
+      registration and on our website at:
+      <a href={URL} class="text-primary hover:underline" referrerpolicy="no-referrer" rel="nofollow">{URL}</a>
+    </p>
+
+    <p class="mb-4">
+      I consent to my personal data being processed in accordance with the terms and conditions set out in this
+      Privacy Notice.
+    </p>
+  </div>
+</div>

@@ -7,22 +7,25 @@ import DigoeHero from '../components/digoe/DigoeHero.astro';
 import DigoeSectors from '../components/digoe/DigoeSectors.astro';
 import DigoeServices from '../components/digoe/DigoeServices.astro';
 import Layout from '../layouts/Layout.astro';
+import { getMessages } from '../i18n';
 
-const siteName = import.meta.env.PUBLIC_SITE_NAME ?? 'DIGOE GF';
-const pageTitle = `${siteName} | Industrial Precision & Digital Velocity`;
+const locale = 'es' as const;
+const meta = getMessages(locale).meta;
 ---
 
 <Layout
-  title={pageTitle}
-  description="Soluciones tecnológicas para manufactura avanzada. Venta, renta, servicio técnico y representantes Dymax, Plasmatreat y Janome."
+  locale={locale}
+  page="home"
+  title={meta.homeTitle}
+  description={meta.homeDescription}
   ogImagePath="/digoe-hero.webp"
   preloadImage="/digoe-hero.webp"
 >
-  <DigoeHeader />
-  <DigoeHero />
-  <DigoeServices />
-  <DigoeBrands />
-  <DigoeSectors />
-  <DigoeAbout />
-  <DigoeContact />
+  <DigoeHeader locale={locale} page="home" />
+  <DigoeHero locale={locale} />
+  <DigoeServices locale={locale} />
+  <DigoeBrands locale={locale} />
+  <DigoeSectors locale={locale} />
+  <DigoeAbout locale={locale} />
+  <DigoeContact locale={locale} />
 </Layout>

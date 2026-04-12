@@ -1,6 +1,14 @@
 ---
 import ggLogo from '../../assets/gg-logo.svg';
+import { getMessages, homeSectionHash } from '../../i18n';
+import type { Locale } from '../../i18n/types';
 
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getMessages(locale).hero;
 const heroImage = '/digoe-hero.webp';
 ---
 
@@ -10,7 +18,7 @@ const heroImage = '/digoe-hero.webp';
     <div class="absolute right-0 top-0 h-full w-1/2 opacity-10">
       <img
         src={heroImage}
-        alt="Detalle industrial de alta precisión"
+        alt={t.heroImageAlt}
         class="h-full w-full object-cover"
         width="1200"
         height="900"
@@ -22,7 +30,7 @@ const heroImage = '/digoe-hero.webp';
     <div class="max-w-4xl">
       <img
         src={ggLogo.src}
-        alt="G&G"
+        alt={t.logoAlt}
         width="1471"
         height="367"
         class="mb-6 block h-auto w-full max-w-[220px] object-contain object-left sm:max-w-[280px] md:max-w-[320px]"
@@ -32,28 +40,27 @@ const heroImage = '/digoe-hero.webp';
       <span
         class="mb-6 inline-block bg-primary px-4 py-1 text-[0.6875rem] font-bold uppercase tracking-widest text-primary-content"
       >
-        Soluciones industriales
+        {t.kicker}
       </span>
       <h1 class="text-display-lg mb-6 text-base-content max-sm:text-4xl max-sm:leading-tight">
-        Soluciones tecnológicas para la <span class="text-accent">manufactura avanzada</span>
+        {t.titleBefore}<span class="text-accent">{t.titleAccent}</span>
       </h1>
       <p class="mb-12 max-w-2xl text-lg leading-relaxed text-slate-600">
-        Potenciamos la eficiencia de su línea de producción con tecnología de vanguardia.
-        Representantes oficiales de <span class="font-bold">Dymax, Plasmatreat, y Janome</span>.
+        {t.lead}<span class="font-bold">{t.leadBrands}</span>.
       </p>
       <div class="flex flex-col gap-4 sm:flex-row">
         <a
           class="flex items-center justify-center gap-2 bg-accent px-10 py-4 text-sm font-bold uppercase tracking-widest text-accent-content transition-all hover:bg-primary"
-          href="#contact"
+          href={homeSectionHash(locale, 'contact')}
         >
-          Contactar
+          {t.ctaContact}
           <span class="material-symbols-outlined text-lg!">arrow_forward</span>
         </a>
         <a
           class="bg-base-300 px-10 py-4 text-center text-sm font-bold uppercase tracking-widest text-base-content transition-all hover:bg-base-200"
-          href="#services"
+          href={homeSectionHash(locale, 'services')}
         >
-          Ver servicios
+          {t.ctaServices}
         </a>
       </div>
     </div>

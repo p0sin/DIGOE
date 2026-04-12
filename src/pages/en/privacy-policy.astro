@@ -1,10 +1,10 @@
 ---
-import DigoeHeader from '../components/digoe/DigoeHeader.astro';
-import PrivacyPolicyContentEs from '../components/PrivacyPolicyContentEs.astro';
-import Layout from '../layouts/Layout.astro';
-import { getMessages } from '../i18n';
+import DigoeHeader from '../../components/digoe/DigoeHeader.astro';
+import PrivacyPolicyContentEn from '../../components/PrivacyPolicyContentEn.astro';
+import Layout from '../../layouts/Layout.astro';
+import { getMessages } from '../../i18n';
 
-const locale = 'es' as const;
+const locale = 'en' as const;
 const meta = getMessages(locale).meta;
 ---
 
@@ -18,6 +18,6 @@ const meta = getMessages(locale).meta;
 >
   <DigoeHeader locale={locale} page="privacy" />
   <section id="privacy-policy" class="pt-20">
-    <PrivacyPolicyContentEs />
+    <PrivacyPolicyContentEn />
   </section>
 </Layout>

@@ -1,24 +1,13 @@
 ---
-const sectors = [
-  {
-    icon: 'precision_manufacturing',
-    title: 'Manufacturero',
-    body: 'Automatización de líneas y ensambles industriales.',
-    offset: '',
-  },
-  {
-    icon: 'medical_services',
-    title: 'Médico',
-    body: 'Validación de procesos para dispositivos médicos.',
-    offset: 'md:mt-12',
-  },
-  {
-    icon: 'restaurant',
-    title: 'Alimenticio',
-    body: 'Empaque y sellado con altos estándares de higiene.',
-    offset: 'md:mt-24',
-  },
-] as const;
+import { getMessages } from '../../i18n';
+import type { Locale } from '../../i18n/types';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getMessages(locale).sectors;
 ---
 
 <section class="industrial-white-space overflow-hidden bg-neutral text-neutral-content">
@@ -26,20 +15,20 @@ const sectors = [
     <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
       <div class="lg:col-span-4">
         <span class="text-[0.6875rem] font-bold uppercase tracking-widest text-warning"
-          >Mercados</span
+          >{t.kicker}</span
         >
         <h2 class="text-display-lg mt-4 mb-8 leading-tight max-sm:text-3xl">
-          Sectores que <br />
-          impulsamos
+          {t.titleLine1}
+          <br />
+          {t.titleLine2}
         </h2>
         <p class="mb-8 text-white/80">
-          Nuestra tecnología se adapta a las exigencias más estrictas de las industrias globales,
-          garantizando repetibilidad y precisión.
+          {t.intro}
         </p>
       </div>
       <div class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:col-span-8">
         {
-          sectors.map((s) => (
+          t.items.map((s) => (
             <div
               class:list={[
                 'group bg-white/5 p-12 transition-colors duration-500 hover:bg-accent',

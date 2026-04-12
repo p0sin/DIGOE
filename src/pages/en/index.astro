@@ -1,0 +1,31 @@
+---
+import DigoeAbout from '../../components/digoe/DigoeAbout.astro';
+import DigoeBrands from '../../components/digoe/DigoeBrands.astro';
+import DigoeContact from '../../components/digoe/DigoeContact.astro';
+import DigoeHeader from '../../components/digoe/DigoeHeader.astro';
+import DigoeHero from '../../components/digoe/DigoeHero.astro';
+import DigoeSectors from '../../components/digoe/DigoeSectors.astro';
+import DigoeServices from '../../components/digoe/DigoeServices.astro';
+import Layout from '../../layouts/Layout.astro';
+import { getMessages } from '../../i18n';
+
+const locale = 'en' as const;
+const meta = getMessages(locale).meta;
+---
+
+<Layout
+  locale={locale}
+  page="home"
+  title={meta.homeTitle}
+  description={meta.homeDescription}
+  ogImagePath="/digoe-hero.webp"
+  preloadImage="/digoe-hero.webp"
+>
+  <DigoeHeader locale={locale} page="home" />
+  <DigoeHero locale={locale} />
+  <DigoeServices locale={locale} />
+  <DigoeBrands locale={locale} />
+  <DigoeSectors locale={locale} />
+  <DigoeAbout locale={locale} />
+  <DigoeContact locale={locale} />
+</Layout>
