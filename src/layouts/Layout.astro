@@ -1,0 +1,111 @@
+---
+import '../styles/global.css';
+
+import { SEO } from 'astro-seo';
+
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  /** Si es false, no se muestra el pie de marketing (pantallas tipo app / onboarding). */
+  showSiteFooter?: boolean;
+  title?: string;
+  description?: string;
+  /** Ruta bajo el sitio público para Open Graph (ej. /imagen.webp). */
+  ogImagePath?: string;
+  /** `null` desactiva preload de imagen LCP. */
+  preloadImage?: string | null;
+}
+
+const URL = import.meta.env.PUBLIC_SITE_URL;
+
+const GTM =
+  typeof import.meta.env.PUBLIC_GTM === 'string' ? import.meta.env.PUBLIC_GTM.trim() : '';
+
+const {
+  showSiteFooter = true,
+  title = 'DIGOE GF | Industrial Precision & Digital Velocity',
+  description =
+    'Soluciones tecnológicas para manufactura avanzada. Representantes de Dymax, Plasmatreat y Janome.',
+  ogImagePath = '/digoe-hero.webp',
+  preloadImage = '/digoe-hero.webp',
+} = Astro.props;
+
+const ogImageUrl = ogImagePath.startsWith('http') ? ogImagePath : `${URL}${ogImagePath}`;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <SEO
+      title={title}
+      description={description}
+      openGraph={{
+        basic: {
+          title,
+          type: 'website',
+          image: ogImageUrl,
+        },
+      }}
+      extend={{
+        link: [{ rel: 'icon', href: '/favicon.ico' }],
+      }}
+    />
+
+    {GTM && (
+      <script define:vars={{ gtmId: GTM }}>
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+          j.async = true;
+          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', gtmId);
+      </script>
+    )}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+      rel="stylesheet"
+    />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} />}
+  </head>
+  <body class="cursor-default bg-base-100 text-base-content selection:bg-accent selection:text-white">
+    {GTM && (
+      <noscript>
+        <iframe
+          src={`https://www.googletagmanager.com/ns.html?id=${GTM}`}
+          height="0"
+          width="0"
+          style="display:none;visibility:hidden"
+          title="Google Tag Manager"></iframe>
+      </noscript>
+    )}
+    <slot />
+    {showSiteFooter && <Footer />}
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+  }
+</style>

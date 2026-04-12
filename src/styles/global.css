@@ -1,0 +1,89 @@
+/**
+ * Tailwind CSS v4 + DaisyUI — tema DIGOE GF (referencia HTML: azul #000a9e, superficies #f9f9ff).
+ */
+
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: light --default;
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Inter", ui-serif, serif;
+  --font-mono: "Fira Code", ui-monospace, monospace;
+
+  --color-primary: #000a9e;
+  --color-primary-content: #ffffff;
+  --color-secondary: #515f74;
+  --color-secondary-content: #ffffff;
+  --color-accent: #1522cd;
+  --color-accent-content: #ffffff;
+  --color-neutral: #1f2f43;
+  --color-neutral-content: #ffffff;
+  --color-base-100: #f9f9ff;
+  --color-base-200: #f0f3ff;
+  --color-base-300: #e7eeff;
+  --color-base-content: #111c2d;
+  --color-info: #1522cd;
+  --color-info-content: #ffffff;
+  --color-success: #35455a;
+  --color-success-content: #a2b2cb;
+  --color-warning: #bec2ff;
+  --color-warning-content: #00046a;
+  --color-error: #ba1a1a;
+  --color-error-content: #ffffff;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    min-height: max(884px, 100dvh);
+  }
+}
+
+@layer utilities {
+  .text-display-lg {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+  }
+
+  .text-headline-md {
+    font-size: 1.75rem;
+    font-weight: 600;
+  }
+
+  .industrial-white-space {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+/* Material Symbols Outlined */
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+  vertical-align: middle;
+}

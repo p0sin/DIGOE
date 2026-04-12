@@ -1,0 +1,95 @@
+name: Website Release
+
+##############################################################################
+# 🔴 CONFIGURACIÓN REQUERIDA:
+#
+# 1. Variables de repositorio (Settings > Secrets and variables > Actions > Variables):
+#    - PUBLIC_SITE_URL: URL base del sitio (ej: "https://cirujanodehernia.com")
+#    - PUBLIC_PHONE:    Número de teléfono público (ej: "+521234567890")
+#    - PUBLIC_WA_LINK:  Enlace completo de WhatsApp (ej: "https://wa.me/521234567890")
+#    - PUBLIC_CONTACT_EMAIL: Correo para aviso de privacidad (ej: "privacidad@tudominio.com")
+#    - PUBLIC_COFEPRIS: Folio/leyenda COFEPRIS (se muestra en el footer)
+#    - PUBLIC_PRIVACY_NAME: Responsable (nombre completo) para aviso de privacidad
+#    - PUBLIC_PRIVACY_ADDRESS: Domicilio completo para aviso de privacidad
+#    - (Opcional) PUBLIC_CONTACT_ADDRESS: Dirección que se muestra en sección de contacto
+#    - (Opcional) PUBLIC_CONTACT_HOURS: Horario que se muestra en sección de contacto
+#    - (Opcional) PUBLIC_GTM: ID de Google Tag Manager (ej: "GTM-XXXXXXX")
+#
+# 2. Secrets (Settings > Secrets and variables > Actions > Secrets):
+#    - FTP_SERVER:  Servidor FTP (ej: "ftp.tudominio.com")
+#    - FTP_USER:    Usuario FTP (ej: "usuario_ftp")
+#    - FTP_PASS:    Contraseña FTP
+#
+# 3. Personalizar según necesidad:
+#    - `node-version`: Versión de Node.js requerida
+#    - `local-dir`:    Directorio de despliegue (actual: "dist/")
+##############################################################################
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch: # ✅ Permite ejecutar el workflow manualmente
+
+jobs:
+  export:
+    name: 🎉 Release
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        node-version: [20] # 🔴 Actualizar si se requiere otra versión
+
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build project
+        env:
+          PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL }} # 🌐 URL base del sitio (requerida para sitemap/OG)
+          PUBLIC_PHONE: ${{ vars.PUBLIC_PHONE }} # 📞 Variable de repositorio (requerida)
+          PUBLIC_WA_LINK: ${{ vars.PUBLIC_WA_LINK }} # 💬 Variable de repositorio (requerida)
+          PUBLIC_CONTACT_EMAIL: ${{ vars.PUBLIC_CONTACT_EMAIL }} # ✉️ Aviso de privacidad
+          PUBLIC_COFEPRIS: ${{ vars.PUBLIC_COFEPRIS }} # 🧾 Footer
+          PUBLIC_PRIVACY_NAME: ${{ vars.PUBLIC_PRIVACY_NAME }} # 👤 Aviso de privacidad
+          PUBLIC_PRIVACY_ADDRESS: ${{ vars.PUBLIC_PRIVACY_ADDRESS }} # 📍 Aviso de privacidad
+          PUBLIC_GTM: ${{ vars.PUBLIC_GTM }} # 📊 Opcional (dejar vacío para desactivar)
+        run: pnpm run build
+
+      - name: Copy htaccess
+        run: cp ./src/.htaccess ./dist/.htaccess
+
+      - name: Reset repo to fix build changes
+        run: git reset --hard
+
+      - name: FTP-Deploy-Action
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          server: ${{ secrets.FTP_SERVER }} # 🌐 Secret (requerido)
+          username: ${{ secrets.FTP_USER }} # 🔑 Secret (requerido)
+          password: ${{ secrets.FTP_PASS }} # 🔒 Secret (requerido)
+          local-dir: dist/ # 📂 Cambiar si el directorio de build es diferente
+
+      - name: Google Chat Notification
+        if: always()
+        run: |
+          if [ "${{ job.status }}" = "success" ]; then
+            STATUS="✅ LANDING PAGE *${{ github.ref_name }}* deployed successfully!"
+          else
+            STATUS="❌ LANDING PAGE *${{ github.ref_name }}* failed to deploy!"
+          fi
+          curl -X POST -H 'Content-Type: application/json' \
+            -d "{\"text\": \"$STATUS\n*Workflow*: [View Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})\n*Commit*: ${{ github.sha }}\"}" \
+            "${{ vars.GOOGLE_CHAT_WEBHOOK_URL }}"

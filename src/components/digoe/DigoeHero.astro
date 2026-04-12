@@ -1,0 +1,50 @@
+---
+const heroImage = '/digoe-hero.webp';
+---
+
+<section class="relative flex min-h-screen items-center overflow-hidden bg-base-100 pt-20">
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent"></div>
+    <div class="absolute right-0 top-0 h-full w-1/2 opacity-10">
+      <img
+        src={heroImage}
+        alt="Detalle industrial de alta precisión"
+        class="h-full w-full object-cover"
+        width="1200"
+        height="900"
+        fetchpriority="high"
+      />
+    </div>
+  </div>
+  <div class="relative z-10 container mx-auto px-8">
+    <div class="max-w-4xl">
+      <span
+        class="mb-6 inline-block bg-primary px-4 py-1 text-[0.6875rem] font-bold uppercase tracking-widest text-primary-content"
+      >
+        Soluciones industriales
+      </span>
+      <h1 class="text-display-lg mb-6 text-base-content max-sm:text-4xl max-sm:leading-tight">
+        Soluciones tecnológicas para la <span class="text-accent">manufactura avanzada</span>
+      </h1>
+      <p class="mb-12 max-w-2xl text-lg leading-relaxed text-slate-600">
+        Potenciamos la eficiencia de su línea de producción con tecnología de vanguardia.
+        Representantes oficiales de <span class="font-bold">Dymax, Plasmatreat, y Janome</span>.
+      </p>
+      <div class="flex flex-col gap-4 sm:flex-row">
+        <a
+          class="flex items-center justify-center gap-2 bg-accent px-10 py-4 text-sm font-bold uppercase tracking-widest text-accent-content transition-all hover:bg-primary"
+          href="#contact"
+        >
+          Contactar
+          <span class="material-symbols-outlined text-lg!">arrow_forward</span>
+        </a>
+        <a
+          class="bg-base-300 px-10 py-4 text-center text-sm font-bold uppercase tracking-widest text-base-content transition-all hover:bg-base-200"
+          href="#services"
+        >
+          Ver servicios
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

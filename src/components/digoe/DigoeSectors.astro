@@ -1,0 +1,61 @@
+---
+const sectors = [
+  {
+    icon: 'precision_manufacturing',
+    title: 'Manufacturero',
+    body: 'Automatización de líneas y ensambles industriales.',
+    offset: '',
+  },
+  {
+    icon: 'medical_services',
+    title: 'Médico',
+    body: 'Validación de procesos para dispositivos médicos.',
+    offset: 'md:mt-12',
+  },
+  {
+    icon: 'restaurant',
+    title: 'Alimenticio',
+    body: 'Empaque y sellado con altos estándares de higiene.',
+    offset: 'md:mt-24',
+  },
+] as const;
+---
+
+<section class="industrial-white-space overflow-hidden bg-neutral text-neutral-content">
+  <div class="container mx-auto px-8">
+    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <span class="text-[0.6875rem] font-bold uppercase tracking-widest text-warning"
+          >Mercados</span
+        >
+        <h2 class="text-display-lg mt-4 mb-8 leading-tight max-sm:text-3xl">
+          Sectores que <br />
+          impulsamos
+        </h2>
+        <p class="mb-8 text-white/80">
+          Nuestra tecnología se adapta a las exigencias más estrictas de las industrias globales,
+          garantizando repetibilidad y precisión.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:col-span-8">
+        {
+          sectors.map((s) => (
+            <div
+              class:list={[
+                'group bg-white/5 p-12 transition-colors duration-500 hover:bg-accent',
+                s.offset,
+              ]}
+            >
+              <span class="material-symbols-outlined mb-6 text-4xl! text-warning" aria-hidden="true">
+                {s.icon}
+              </span>
+              <h4 class="mb-4 text-xl font-bold uppercase tracking-tighter">{s.title}</h4>
+              <div class="mb-4 h-px w-12 bg-warning transition-all duration-500 group-hover:w-full" />
+              <p class="text-sm text-white/75 group-hover:text-white">{s.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

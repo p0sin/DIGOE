@@ -1,0 +1,59 @@
+---
+const services = [
+  {
+    icon: 'shopping_cart',
+    title: 'Venta',
+    body: 'Distribución autorizada de equipos industriales de alta precisión.',
+  },
+  {
+    icon: 'key',
+    title: 'Renta',
+    body: 'Disponibilidad inmediata de equipos para proyectos temporales o pruebas.',
+  },
+  {
+    icon: 'build',
+    title: 'Servicio Técnico',
+    body: 'Mantenimiento preventivo y correctivo especializado.',
+  },
+  {
+    icon: 'school',
+    title: 'Capacitación',
+    body: 'Entrenamiento técnico para la operación óptima de sus equipos.',
+  },
+  {
+    icon: 'engineering',
+    title: 'Proyectos In Situ',
+    body: 'Implementación y optimización directa en su planta productiva.',
+  },
+] as const;
+---
+
+<section class="industrial-white-space bg-base-200" id="services">
+  <div class="container mx-auto px-8">
+    <div class="mb-16 flex flex-col items-end justify-between gap-6 md:flex-row">
+      <div>
+        <span class="text-[0.6875rem] font-bold uppercase tracking-widest text-primary"
+          >Nuestra Experiencia</span
+        >
+        <h2 class="text-headline-md mt-2 uppercase">Servicios integrales</h2>
+      </div>
+      <div class="mx-8 hidden h-[2px] flex-grow bg-base-300/80 md:block"></div>
+    </div>
+    <div class="grid grid-cols-1 gap-px bg-base-300/50 md:grid-cols-2 lg:grid-cols-5">
+      {
+        services.map((s) => (
+          <div class="group bg-base-100 p-10 transition-colors duration-300 hover:bg-accent">
+            <span
+              class="material-symbols-outlined mb-6 text-4xl! text-primary group-hover:text-white"
+              aria-hidden="true"
+            >
+              {s.icon}
+            </span>
+            <h3 class="mb-4 text-lg font-bold group-hover:text-white">{s.title}</h3>
+            <p class="text-sm leading-relaxed text-slate-600 group-hover:text-white/80">{s.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

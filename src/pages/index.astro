@@ -1,0 +1,28 @@
+---
+import DigoeAbout from '../components/digoe/DigoeAbout.astro';
+import DigoeBrands from '../components/digoe/DigoeBrands.astro';
+import DigoeContact from '../components/digoe/DigoeContact.astro';
+import DigoeHeader from '../components/digoe/DigoeHeader.astro';
+import DigoeHero from '../components/digoe/DigoeHero.astro';
+import DigoeSectors from '../components/digoe/DigoeSectors.astro';
+import DigoeServices from '../components/digoe/DigoeServices.astro';
+import Layout from '../layouts/Layout.astro';
+
+const siteName = import.meta.env.PUBLIC_SITE_NAME ?? 'DIGOE GF';
+const pageTitle = `${siteName} | Industrial Precision & Digital Velocity`;
+---
+
+<Layout
+  title={pageTitle}
+  description="Soluciones tecnológicas para manufactura avanzada. Venta, renta, servicio técnico y representantes Dymax, Plasmatreat y Janome."
+  ogImagePath="/digoe-hero.webp"
+  preloadImage="/digoe-hero.webp"
+>
+  <DigoeHeader />
+  <DigoeHero />
+  <DigoeServices />
+  <DigoeBrands />
+  <DigoeSectors />
+  <DigoeAbout />
+  <DigoeContact />
+</Layout>
