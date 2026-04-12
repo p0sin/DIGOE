@@ -12,14 +12,17 @@ const siteName = import.meta.env.PUBLIC_SITE_NAME ?? 'DIGOE GF';
 <header
   class="fixed top-0 z-50 w-full rounded-none border-b border-base-300/80 bg-base-100/80 backdrop-blur-md dark:border-slate-700 dark:bg-slate-900/80"
 >
-  <div class="mx-auto flex w-full max-w-full items-center justify-between px-4 py-4 sm:px-8">
+  <div
+    class="mx-auto flex w-full max-w-full items-center justify-between px-4 py-4 sm:px-8"
+  >
     <div class="flex items-center gap-3">
-      <span class="material-symbols-outlined text-3xl! text-blue-700 dark:text-blue-500" aria-hidden="true"
-        >factory</span
+      <span
+        class="material-symbols-outlined text-3xl! text-blue-700 dark:text-blue-500"
+        aria-hidden="true">factory</span
       >
       <span
         class="font-sans text-xl font-black uppercase tracking-tighter text-blue-700 dark:text-blue-600 sm:text-2xl"
-        >{siteName}</span
+        >DIGOE</span
       >
     </div>
 
@@ -38,7 +41,11 @@ const siteName = import.meta.env.PUBLIC_SITE_NAME ?? 'DIGOE GF';
 
     <div class="flex items-center gap-2 md:gap-4">
       <div class="dropdown dropdown-end md:hidden">
-        <label tabindex="0" class="btn btn-ghost btn-square" aria-label="Abrir menú">
+        <label
+          tabindex="0"
+          class="btn btn-ghost btn-square"
+          aria-label="Abrir menú"
+        >
           <span class="material-symbols-outlined text-2xl!">menu</span>
         </label>
         <ul

@@ -1,4 +1,6 @@
 ---
+import ggLogo from '../../assets/gg-logo.svg';
+
 const heroImage = '/digoe-hero.webp';
 ---
 
@@ -18,6 +20,15 @@ const heroImage = '/digoe-hero.webp';
   </div>
   <div class="relative z-10 container mx-auto px-8">
     <div class="max-w-4xl">
+      <img
+        src={ggLogo.src}
+        alt="G&G"
+        width="1471"
+        height="367"
+        class="mb-6 block h-auto w-full max-w-[220px] object-contain object-left sm:max-w-[280px] md:max-w-[320px]"
+        loading="eager"
+        decoding="async"
+      />
       <span
         class="mb-6 inline-block bg-primary px-4 py-1 text-[0.6875rem] font-bold uppercase tracking-widest text-primary-content"
       >
