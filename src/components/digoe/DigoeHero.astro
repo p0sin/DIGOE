@@ -12,10 +12,15 @@ const t = getMessages(locale).hero;
 const heroImage = '/digoe-hero.webp';
 ---
 
-<section class="relative flex min-h-screen items-center overflow-hidden bg-base-100 pt-20">
+<section
+  class="relative flex min-h-screen items-center overflow-hidden bg-base-100 pt-20"
+>
   <div class="absolute inset-0 z-0">
-    <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent"></div>
-    <div class="absolute right-0 top-0 h-full w-1/2 opacity-10">
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent"
+    >
+    </div>
+    <div class="absolute right-0 top-0 h-full w-1/2 opacity-[0.2]">
       <img
         src={heroImage}
         alt={t.heroImageAlt}
@@ -42,7 +47,9 @@ const heroImage = '/digoe-hero.webp';
       >
         {t.kicker}
       </span>
-      <h1 class="text-display-lg mb-6 text-base-content max-sm:text-4xl max-sm:leading-tight">
+      <h1
+        class="text-display-lg mb-6 text-base-content max-sm:text-4xl max-sm:leading-tight"
+      >
         {t.titleBefore}<span class="text-accent">{t.titleAccent}</span>
       </h1>
       <p class="mb-12 max-w-2xl text-lg leading-relaxed text-slate-600">
