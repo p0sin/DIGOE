@@ -11,7 +11,7 @@ export const messages = {
         'Aviso de privacidad integral: tratamiento de datos personales, cookies y derechos ARCO (LFPDPPP).',
     },
     header: {
-      brand: 'DIGOE',
+      brand: 'G&G',
       navLabel: 'Principal',
       openMenu: 'Abrir menú',
       langEs: 'ES',
@@ -68,7 +68,7 @@ export const messages = {
     },
     brands: {
       title: 'Tecnología de punta',
-      ctaCatalog: 'Ver catálogo',
+      ctaCatalog: 'Pedir informes',
       items: [
         {
           name: 'DYMAX',
@@ -229,7 +229,7 @@ export const messages = {
     },
     brands: {
       title: 'Cutting-edge technology',
-      ctaCatalog: 'View catalog',
+      ctaCatalog: 'Request info',
       items: [
         {
           name: 'DYMAX',
