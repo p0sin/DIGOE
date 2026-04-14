@@ -1,5 +1,5 @@
 ---
-import { alternatePageUrl, getMessages, homeSectionHash } from '../../i18n';
+import { alternatePageUrl, getMessages, homePath, homeSectionHash } from '../../i18n';
 import type { Locale, PageContext } from '../../i18n/types';
 
 interface Props {
@@ -26,12 +26,16 @@ const linkToEn = locale === 'es' ? alternatePageUrl('es', page) : null;
   <div
     class="container mx-auto flex items-center justify-between px-8 py-4"
   >
-    <div class="flex items-center gap-3">
+    <a
+      href={homePath(locale)}
+      class="flex items-center gap-3"
+      aria-label={t.brand}
+    >
       <span
         class="font-sans text-xl font-black uppercase tracking-tighter text-blue-700 dark:text-blue-600 sm:text-2xl"
         >{t.brand}</span
       >
-    </div>
+    </a>
 
     <nav class="hidden items-center gap-8 md:flex" aria-label={t.navLabel}>
       {
