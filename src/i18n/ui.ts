@@ -18,7 +18,7 @@ export const messages = {
       langEn: 'EN',
       nav: {
         services: 'Servicios',
-        brands: 'Marcas',
+        technologies: 'Tecnología',
         about: 'Nosotros',
         contact: 'Contacto',
       },
@@ -87,6 +87,29 @@ export const messages = {
           slug: 'janome',
           body: 'Robótica industrial de alta precisión y sistemas de automatización.',
           alt: 'Robótica Janome',
+        },
+      ],
+    },
+    technologies: {
+      title: 'Tecnología de punta',
+      subtitle:
+        'Soluciones especializadas para manufactura avanzada, tratamiento de materiales y automatización industrial.',
+      ctaCatalog: 'Pedir informes',
+      items: [
+        {
+          category: 'Adhesivos y curado',
+          name: 'Curado rápido UV',
+          body: 'Sistemas de adhesivos de alto rendimiento con curado por luz ultravioleta para uniones precisas y tiempos de ciclo reducidos.',
+        },
+        {
+          category: 'Tratamiento de superficies',
+          name: 'Plasma atmosférico',
+          body: 'Activación y limpieza de superficies mediante plasma a presión atmosférica para mejorar la adherencia sin disolventes ni procesos húmedos.',
+        },
+        {
+          category: 'Automatización',
+          name: 'Robótica de precisión',
+          body: 'Brazos robóticos y sistemas de automatización de alta exactitud para dispensado, ensamble y procesos repetitivos de manufactura.',
         },
       ],
     },
@@ -179,7 +202,7 @@ export const messages = {
       langEn: 'EN',
       nav: {
         services: 'Services',
-        brands: 'Brands',
+        technologies: 'Technology',
         about: 'About',
         contact: 'Contact',
       },
@@ -248,6 +271,29 @@ export const messages = {
           slug: 'janome',
           body: 'High-precision industrial robotics and automation systems.',
           alt: 'Janome robotics',
+        },
+      ],
+    },
+    technologies: {
+      title: 'Cutting-edge technology',
+      subtitle:
+        'Specialized solutions for advanced manufacturing, surface treatment, and industrial automation.',
+      ctaCatalog: 'Request information',
+      items: [
+        {
+          category: 'Adhesives & curing',
+          name: 'UV rapid curing',
+          body: 'High-performance adhesive systems with ultraviolet light curing for precise bonding and reduced cycle times.',
+        },
+        {
+          category: 'Surface treatment',
+          name: 'Atmospheric plasma',
+          body: 'Surface activation and cleaning using atmospheric-pressure plasma to enhance adhesion without solvents or wet processes.',
+        },
+        {
+          category: 'Automation',
+          name: 'Precision robotics',
+          body: 'High-accuracy robotic arms and automation systems for dispensing, assembly, and repetitive manufacturing processes.',
         },
       ],
     },

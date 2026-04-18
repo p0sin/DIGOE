@@ -9,8 +9,9 @@ interface Props {
 const { locale } = Astro.props;
 const t = getMessages(locale).contact;
 const phone = import.meta.env.PUBLIC_PHONE ?? '33 3123 0189';
-const email = import.meta.env.PUBLIC_CONTACT_EMAIL ?? 'info@digoegf.com';
+const email = import.meta.env.PUBLIC_CONTACT_EMAIL ?? 'arturopo97@gmail.com';
 const location = import.meta.env.PUBLIC_PRIVACY_ADDRESS ?? 'Guadalajara, Jalisco, México';
+const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
 ---
 
 <section class="industrial-white-space bg-base-100" id="contact">
@@ -50,7 +51,20 @@ const location = import.meta.env.PUBLIC_PRIVACY_ADDRESS ?? 'Guadalajara, Jalisco
           </div>
         </div>
         <div class="bg-base-100 p-10 text-base-content">
-          <form class="space-y-6" method="post" action="#">
+          <form class="space-y-6" method="post" action="https://api.web3forms.com/submit">
+            <input type="hidden" name="access_key" value={web3formsKey} />
+            <input type="hidden" name="subject" value="Nuevo contacto desde DIGOE" />
+            <input type="hidden" name="from_name" value="DIGOE GF" />
+            <input
+              type="hidden"
+              name="redirect"
+              value={
+                locale === 'en'
+                  ? 'https://digoegf.com/en/?contact=ok#contact'
+                  : 'https://digoegf.com/?contact=ok#contact'
+              }
+            />
+            <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div>
                 <label class="mb-2 block text-[0.6875rem] font-bold uppercase" for="digoe-name"

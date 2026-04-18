@@ -38,6 +38,46 @@
   --color-error-content: #ffffff;
 }
 
+@font-face {
+  font-family: "Trade Gothic LT";
+  src: url("/fonts/Trade%20Gothic%20LT%20Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Trade Gothic LT";
+  src: url("/fonts/Trade%20Gothic%20LT.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Trade Gothic LT";
+  src: url("/fonts/Trade%20Gothic%20LT%20Oblique.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Trade Gothic LT";
+  src: url("/fonts/Trade%20Gothic%20LT%20Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Trade Gothic LT";
+  src: url("/fonts/Trade%20Gothic%20LT%20Bold%20Oblique.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 @layer base {
   html {
     -webkit-font-smoothing: antialiased;
@@ -49,6 +89,10 @@
 }
 
 @layer utilities {
+  .font-tradegothic {
+    font-family: "Trade Gothic LT", var(--font-sans);
+  }
+
   .text-display-lg {
     font-size: 3.5rem;
     line-height: 1.1;

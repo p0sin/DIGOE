@@ -52,6 +52,7 @@ const alternate =
       };
 
 const htmlLang = locale === 'en' ? 'en' : 'es';
+const canonicalUrl = locale === 'en' ? alternate.en : alternate.es;
 ---
 
 <!doctype html>
@@ -65,6 +66,7 @@ const htmlLang = locale === 'en' ? 'en' : 'es';
     <SEO
       title={title}
       description={description}
+      canonical={canonicalUrl}
       openGraph={{
         basic: {
           title,

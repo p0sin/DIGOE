@@ -14,6 +14,9 @@ export default {
   /** Email de contacto (aviso de privacidad, bloque contacto) */
   PUBLIC_CONTACT_EMAIL: 'info@digoegf.com',
 
+  /** Web3Forms access key (formulario de contacto) */
+  PUBLIC_WEB3FORMS_KEY: '7fa23247-ec49-4bf0-8201-31bc9013fade',
+
   /** ID de Google Tag Manager (ej: GTM-XXXXXXX). Dejar vacío para desactivar. */
   PUBLIC_GTM: '',
 

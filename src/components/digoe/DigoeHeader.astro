@@ -1,5 +1,10 @@
 ---
-import { alternatePageUrl, getMessages, homePath, homeSectionHash } from '../../i18n';
+import {
+  alternatePageUrl,
+  getMessages,
+  homePath,
+  homeSectionHash,
+} from '../../i18n';
 import type { Locale, PageContext } from '../../i18n/types';
 
 interface Props {
@@ -11,7 +16,7 @@ const { locale, page = 'home' } = Astro.props;
 const t = getMessages(locale).header;
 const nav = [
   { href: homeSectionHash(locale, 'services'), label: t.nav.services },
-  { href: homeSectionHash(locale, 'brands'), label: t.nav.brands },
+  { href: homeSectionHash(locale, 'technologies'), label: t.nav.technologies },
   { href: homeSectionHash(locale, 'about'), label: t.nav.about },
   { href: homeSectionHash(locale, 'contact'), label: t.nav.contact },
 ] as const;
@@ -23,16 +28,14 @@ const linkToEn = locale === 'es' ? alternatePageUrl('es', page) : null;
 <header
   class="fixed top-0 z-50 w-full rounded-none border-b border-base-300/80 bg-base-100/80 backdrop-blur-md dark:border-slate-700 dark:bg-slate-900/80"
 >
-  <div
-    class="container mx-auto flex items-center justify-between px-8 py-4"
-  >
+  <div class="container mx-auto flex items-center justify-between px-8 py-4">
     <a
       href={homePath(locale)}
       class="flex items-center gap-3"
       aria-label={t.brand}
     >
       <span
-        class="font-sans text-xl font-black uppercase tracking-tighter text-blue-700 dark:text-blue-600 sm:text-2xl"
+        class="font-tradegothic text-xl font-bold uppercase tracking-tighter text-blue-700 dark:text-blue-600 sm:text-4xl"
         >{t.brand}</span
       >
     </a>
