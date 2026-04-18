@@ -43,7 +43,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 $emailSafe = str_replace(["\r", "\n"], '', $email);
 $nameSafe = str_replace(["\r", "\n"], '', $name);
 
-$to = 'arturopo97@gmail.com';
+$to = 'info@digoegf.com';
 $subject = 'Nuevo contacto desde DIGOE';
 
 $lines = [];
