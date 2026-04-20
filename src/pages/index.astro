@@ -1,4 +1,5 @@
 ---
+import Layout from '../layouts/Layout.astro';
 import DigoeAbout from '../components/digoe/DigoeAbout.astro';
 import DigoeTechnologies from '../components/digoe/DigoeTechnologies.astro';
 import DigoeContact from '../components/digoe/DigoeContact.astro';
@@ -6,26 +7,124 @@ import DigoeHeader from '../components/digoe/DigoeHeader.astro';
 import DigoeHero from '../components/digoe/DigoeHero.astro';
 import DigoeSectors from '../components/digoe/DigoeSectors.astro';
 import DigoeServices from '../components/digoe/DigoeServices.astro';
-import Layout from '../layouts/Layout.astro';
 import { getMessages } from '../i18n';
 
 const locale = 'es' as const;
+
+const siteName =
+  typeof import.meta.env.PUBLIC_SITE_NAME === 'string' ? import.meta.env.PUBLIC_SITE_NAME : 'DIGOE GF';
+const contactEmail =
+  typeof import.meta.env.PUBLIC_CONTACT_EMAIL === 'string' ? import.meta.env.PUBLIC_CONTACT_EMAIL : '';
+const phone = typeof import.meta.env.PUBLIC_PHONE === 'string' ? import.meta.env.PUBLIC_PHONE : '';
+
+// Home meta (cuando se reactive la landing)
 const meta = getMessages(locale).meta;
+
+/**
+ * MODO MANTENIMIENTO (temporal)
+ *
+ * Para volver el sitio a la normalidad (landing original):
+ * - Cambia `title` y `description` a:
+ *   - `meta.homeTitle`
+ *   - `meta.homeDescription`
+ * - En `<Layout />`, cambia `preloadImage={null}` a `preloadImage="/digoe-hero.webp"` (o la imagen LCP que toque).
+ * - Descomenta el bloque "Landing original" (componentes `Digoe*`) y elimina el `<main>...</main>` de mantenimiento.
+ */
+const title = `${siteName} | Mantenimiento`;
+const description = 'Estamos realizando tareas de mantenimiento. Volvemos pronto.';
 ---
 
 <Layout
   locale={locale}
   page="home"
-  title={meta.homeTitle}
-  description={meta.homeDescription}
+  title={title}
+  description={description}
   ogImagePath="/digoe-hero.webp"
-  preloadImage="/digoe-hero.webp"
+  preloadImage={null}
 >
-  <DigoeHeader locale={locale} page="home" />
-  <DigoeHero locale={locale} />
-  <DigoeServices locale={locale} />
-  <DigoeTechnologies locale={locale} />
-  <DigoeSectors locale={locale} />
-  <DigoeAbout locale={locale} />
-  <DigoeContact locale={locale} />
+  <!--
+    Landing original (para reactivar, descomentar este bloque y ajustar el title/description arriba)
+
+    <DigoeHeader locale={locale} page="home" />
+    <DigoeHero locale={locale} />
+    <DigoeServices locale={locale} />
+    <DigoeTechnologies locale={locale} />
+    <DigoeSectors locale={locale} />
+    <DigoeAbout locale={locale} />
+    <DigoeContact locale={locale} />
+  -->
+
+  <main class="min-h-[calc(100svh-6rem)] bg-base-100">
+    <section class="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between">
+      <div class="max-w-xl">
+        <div class="inline-flex items-center gap-2 rounded-full bg-base-200 px-4 py-2 text-sm font-medium">
+          <span class="material-symbols-outlined text-[18px]">build_circle</span>
+          Estamos en mantenimiento
+        </div>
+
+        <h1 class="mt-6 text-balance text-4xl font-black leading-tight md:text-5xl">
+          Volvemos pronto.
+        </h1>
+        <p class="mt-4 text-pretty text-lg opacity-80">
+          Estamos realizando ajustes para mejorar tu experiencia. Si necesitas ayuda o una cotización,
+          contáctanos y te respondemos lo antes posible.
+        </p>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          {contactEmail && (
+            <a class="btn btn-outline" href={`mailto:${contactEmail}`}>
+              <span class="material-symbols-outlined">mail</span>
+              {contactEmail}
+            </a>
+          )}
+          {phone && (
+            <a class="btn btn-ghost" href={`tel:${phone.replace(/\s+/g, '')}`}>
+              <span class="material-symbols-outlined">call</span>
+              {phone}
+            </a>
+          )}
+        </div>
+
+        <div class="mt-10 rounded-2xl bg-base-200 p-5">
+          <p class="text-sm opacity-80">
+            Si esta pantalla persiste, intenta recargar más tarde o contáctanos por los medios
+            anteriores.
+          </p>
+        </div>
+      </div>
+
+      <div class="w-full md:max-w-md">
+        <div class="relative overflow-hidden rounded-3xl border border-base-300 bg-base-200 p-8">
+          <div
+            class="pointer-events-none absolute inset-0 opacity-60 [background:radial-gradient(circle_at_20%_10%,hsl(var(--p))_0%,transparent_55%),radial-gradient(circle_at_80%_60%,hsl(var(--a))_0%,transparent_55%)]"></div>
+
+          <div class="relative">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="text-sm font-semibold opacity-80">Estado</p>
+                <p class="mt-1 text-2xl font-black">Actualizando el sitio</p>
+              </div>
+              <span class="badge badge-primary badge-lg">Online</span>
+            </div>
+
+            <div class="mt-6 grid grid-cols-1 gap-3">
+              <div class="rounded-2xl bg-base-100/70 p-4 backdrop-blur">
+                <p class="text-xs font-semibold opacity-70">Tiempo estimado</p>
+                <p class="mt-1 text-lg font-bold">Por confirmar</p>
+              </div>
+              <div class="rounded-2xl bg-base-100/70 p-4 backdrop-blur">
+                <p class="text-xs font-semibold opacity-70">Disponibilidad</p>
+                <p class="mt-1 text-lg font-bold">Atención por Email / Llamada</p>
+              </div>
+            </div>
+
+            <div class="mt-6 flex items-center gap-2 text-xs opacity-70">
+              <span class="inline-flex size-2 rounded-full bg-success"></span>
+              Respuesta humana en horario laboral
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>
