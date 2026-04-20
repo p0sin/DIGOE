@@ -195,7 +195,7 @@ export const messages = {
         'Privacy notice: personal data processing, cookies, and ARCO rights (Mexican LFPDPPP framework).',
     },
     header: {
-      brand: 'DIGOE',
+      brand: 'G&G',
       navLabel: 'Main',
       openMenu: 'Open menu',
       langEs: 'ES',
